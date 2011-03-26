@@ -1,0 +1,103 @@
+;;  -*- emacs-lisp -*-
+;; cwyang's Emacs setting 
+;; 2011.03.27
+;;
+
+(prefer-coding-system 'utf-8)
+
+(setq inhibit-splash-screen t)
+(global-font-lock-mode 1)
+(tool-bar-mode -1) ; go away toolbar
+
+(add-to-list 'load-path "~/emacs/")
+(add-to-list 'load-path "~/emacs/color-theme-6.6.0")
+
+;; OS/Environment
+(require 'hangul) ; New Korean Input
+(load "zenburn") ; color
+(load "my-hangul") ; Korean
+(load "mousewheel") ; Mousewheel
+(load "xterm") ; Xterm & modeline
+(load "parenthesis") ; paredit, match-paren, and mic-paren
+(require 'w3m-load)
+(require 'darkroom-mode)
+(global-set-key [f6] 'darkroom-mode)
+(require 'iswitchb) ; enhanced C-x b
+(iswitchb-default-keybindings)
+;(load "x11-setting") ; X11 font
+;(require 'tramp)
+;(require 'recentf)
+;(recentf-mode 1)
+;(load "sunrise-commander")
+;(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Language
+(load "c")
+(load "j")
+;(load "haskell")
+
+;; Global Hotkey
+(global-set-key (kbd "M-C") 'compile)
+(global-set-key (quote [C-up]) (quote scroll-down))
+(global-set-key (quote [C-down]) (quote scroll-up))
+(global-set-key (quote [67108896]) (quote toggle-korean-input-method))
+
+;; Misc Setting
+(setq tramp-default-method "scp")
+(setq lpr-command "vi"
+      lpr-sqitches '("/p")
+      printer-name nil)
+(setq browse-url-browser-function 'w3m-browse-url
+      w3m-pop-up-windows t
+      w3m-pop-up-frames t
+      common-lisp-hyperspec-root "/usr/share/doc/hyperspec-7.0/HyperSpec/"
+      special-display-buffer-names (cons "*w3m*" special-display-buffer-names))
+(setq message-log-max 2048)
+(setq gnus-select-method '(nntp "news.kornet.net")
+      imap-ssl-program "/usr/bin/openssl s_client -ssl3 -connect %s:%p"
+      gnus-secondary-select-methods '((nnimap "ns.aratech.co.kr"
+				       (nnimap-address "127.0.0.1")
+					;; (nnimap-stream tls)
+				       (nnimap-list-pattern ("INBOX")))))
+;(set-fontset-font "fontset-default" '(#x1100 . #xffdc) '("Malgun Gothic" . "unicode-bmp"))
+;(set-fontset-font "fontset-default" '(#xe0bc . #xf66e) '("New Gulim" . "unicode-bmp"))
+
+;; Local Setting
+(defun j1 () ; work envirnment
+  "work environment j5k"
+  (interactive)
+  (set-default 'compile-command "(cd ~/Cache/j5k_cvs; LANG=C make -j8 -k j5k)")
+  (visit-tags-table "~/Cache/j5k_cvs"))
+
+(defun windows-local ()
+  "windows environement"
+  )
+(defun linux-local ()
+  "linux environment, official work mode"
+  (setq lpr-command "gtklp")
+  (j1))
+
+(defun osx-local ()
+  "macbook environment"
+  (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
+  (setq mac-option-modifier 'ctrl)
+  (setq mac-command-modifier 'meta))
+
+(defun undefined-local ()
+  "environment cannot be determined"
+  (interactive)
+  (message  "environment cannot be determined"))
+
+(cond ((string= system-type "windows-nt")
+       (windows-local))
+      ((string= system-type "gnu/linux")
+       (linux-local))
+      ((string= system-type "darwin")
+       (osx-local))
+      (t (undefined-local)))
+
+;; Zenburn!
+(zenburn)
+(redraw-frame (selected-frame))
+
+;(message "Loading emacs.el... done")
