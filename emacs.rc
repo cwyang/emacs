@@ -19,7 +19,6 @@
 (load "mousewheel") ; Mousewheel
 (load "xterm") ; Xterm & modeline
 (load "parenthesis") ; paredit, match-paren, and mic-paren
-(require 'w3m-load)
 (require 'darkroom-mode)
 (global-set-key [f6] 'darkroom-mode)
 (require 'iswitchb) ; enhanced C-x b
@@ -71,14 +70,18 @@
 
 (defun windows-local ()
   "windows environement"
+	(setq inferior-lisp-program "clisp.exe")
+	(load "~\\quicklisp\\slime-helper.el")
   )
 (defun linux-local ()
   "linux environment, official work mode"
+  (require 'w3m-load)
   (setq lpr-command "gtklp")
   (j1))
 
 (defun osx-local ()
   "macbook environment"
+  (require 'w3m-load)
   (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
