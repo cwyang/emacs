@@ -12,6 +12,9 @@
 (add-to-list 'load-path "~/emacs/")
 (add-to-list 'load-path "~/emacs/color-theme-6.6.0")
 
+(or (getenv "TERM")
+    (setenv "TERM" "n/a"))
+
 ;; OS/Environment
 (require 'hangul) ; New Korean Input
 (load "zenburn") ; color
@@ -81,7 +84,6 @@
 
 (defun osx-local ()
   "macbook environment"
-  (require 'w3m-load)
   (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
