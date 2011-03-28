@@ -12,8 +12,8 @@
 (add-to-list 'load-path "~/emacs/")
 (add-to-list 'load-path "~/emacs/color-theme-6.6.0")
 
-(or (getenv "TERM")
-    (setenv "TERM" "n/a"))
+(or (getenv "TERM") (setenv "TERM" "n/a"))
+(or (getenv "HANGUL_KEYBOARD_TYPE") (setenv "HANGUL_KEYBOARD_TYPE" "3f"))
 
 ;; OS/Environment
 (require 'hangul) ; New Korean Input
