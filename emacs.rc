@@ -85,6 +85,8 @@
 (defun osx-local ()
   "macbook environment"
   (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
 
