@@ -85,6 +85,12 @@
 (defun osx-local ()
   "macbook environment"
   (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
+  (setq browse-url-browser-function 'browse-url-generic
+	common-lisp-hyperspec-root "/Users/cwyang/hyperspec7.0/HyperSpec/"  
+  )
+  (setq browse-url-generic-program
+	(if (file-exists-p "/usr/bin/open")
+	    "/usr/bin/open"))
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (setq mac-option-modifier 'ctrl)
