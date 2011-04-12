@@ -83,6 +83,7 @@
 (defun linux-local ()
   "linux environment, official work mode"
   (require 'w3m-load)
+  (require 'w32-fullscreen)
   (setq lpr-command "gtklp")
   (j1))
 
