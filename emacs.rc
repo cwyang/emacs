@@ -16,6 +16,8 @@
 (or (getenv "HANGUL_KEYBOARD_TYPE") (setenv "HANGUL_KEYBOARD_TYPE" "3f"))
 
 ;; OS/Environment
+(load "local-path")
+; local-path: hypespec-root & quicklisp-root
 (require 'hangul) ; New Korean Input
 (load "zenburn") ; color
 (load "my-hangul") ; Korean
@@ -52,7 +54,7 @@
 (setq browse-url-browser-function 'w3m-browse-url
       w3m-pop-up-windows t
       w3m-pop-up-frames t
-      common-lisp-hyperspec-root "/usr/share/doc/hyperspec-7.0/HyperSpec/"
+;      common-lisp-hyperspec-root "/usr/share/doc/hyperspec-7.0/HyperSpec/"
       special-display-buffer-names (cons "*w3m*" special-display-buffer-names))
 (setq message-log-max 2048)
 (setq gnus-select-method '(nntp "news.kornet.net")
@@ -74,11 +76,10 @@
 (defun windows-local ()
   "windows environement"
   (global-set-key [C-kanji] (quote toggle-korean-input-method))
-  (setq browse-url-browser-function 'browse-url-default-windows-browser
-	common-lisp-hyperspec-root "C:\\cygwin\\home\\ho\\HyperSpec\\"  
-  )
+  (setq browse-url-browser-function 'browse-url-default-windows-browser)
   (setq inferior-lisp-program "sbcl.exe")
-  (load "~\\quicklisp\\slime-helper.el"))
+  (load (expand-file-name (concat quicklisp-root "slime-helper.el"))))
+
 (defun linux-local ()
   "linux environment, official work mode"
   (require 'w3m-load)
@@ -95,7 +96,7 @@
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
-  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (load (concat quicklisp-root "slime-helper.el"))
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
 
