@@ -74,7 +74,10 @@
 (defun windows-local ()
   "windows environement"
   (global-set-key [C-kanji] (quote toggle-korean-input-method))
-  (setq inferior-lisp-program "clisp.exe")
+  (setq browse-url-browser-function 'browse-url-default-windows-browser
+	common-lisp-hyperspec-root "C:\\cygwin\\home\\ho\\HyperSpec\\"  
+  )
+  (setq inferior-lisp-program "sbcl.exe")
   (load "~\\quicklisp\\slime-helper.el"))
 (defun linux-local ()
   "linux environment, official work mode"
