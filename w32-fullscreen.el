@@ -72,7 +72,7 @@
   (modify-frame-parameters (selected-frame)
 			   '((menu-bar-lines . 0) (tool-bar-lines . 0)
 			     (vertical-scroll-bars . nil)))
-  (w32-fullscreen-toggle-titlebar)
+  ;(w32-fullscreen-toggle-titlebar)
   (w32-fullscreen-maximize-frame))
 
 (defun w32-fullscreen-off ()
@@ -85,6 +85,7 @@
      (tool-bar-lines . ,(w32-fullscreen-recall 'tool-bar-lines))
      (vertical-scroll-bars . ,(w32-fullscreen-recall 'vertical-scroll-bars))))
   (w32-fullscreen-restore-frame)
-  (w32-fullscreen-toggle-titlebar))
+  ;(w32-fullscreen-toggle-titlebar)
+)
 
 (provide 'w32-fullscreen)
