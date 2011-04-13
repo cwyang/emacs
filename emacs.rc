@@ -39,6 +39,7 @@
 (load "c")
 (load "j")
 ;(load "haskell")
+(load (expand-file-name (concat quicklisp-root "slime-helper.el")))
 
 ;; Global Hotkey
 (global-set-key (kbd "M-C") 'compile)
@@ -78,13 +79,14 @@
   (global-set-key [C-kanji] (quote toggle-korean-input-method))
   (setq browse-url-browser-function 'browse-url-default-windows-browser)
   (setq inferior-lisp-program "sbcl.exe")
-  (load (expand-file-name (concat quicklisp-root "slime-helper.el"))))
+  )
 
 (defun linux-local ()
   "linux environment, official work mode"
   (require 'w3m-load)
   (require 'w32-fullscreen)
   (setq lpr-command "gtklp")
+  (setq inferior-lisp-program "sbcl")
   (j1))
 
 (defun osx-local ()
@@ -97,7 +99,6 @@
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
-  (load (concat quicklisp-root "slime-helper.el"))
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
 
