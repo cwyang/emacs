@@ -58,7 +58,7 @@
 	 (w32-fullscreen-remember 'enabled t)
 	 (w32-fullscreen-on))))
 
-(defun w32-fullscreen-on ()
+(defun w32-fullscreen-on-foo ()
   "Enable fullscreen display of current frame (windows only)"
   (interactive)
   ; - remember interface settings
@@ -72,10 +72,15 @@
   (modify-frame-parameters (selected-frame)
 			   '((menu-bar-lines . 0) (tool-bar-lines . 0)
 			     (vertical-scroll-bars . nil)))
-  ;(w32-fullscreen-toggle-titlebar)
+  (w32-fullscreen-toggle-titlebar)
+  (w32-fullscreen-maximize-frame))
+(defun w32-fullscreen-on ()
+  "Enable fullscreen display of current frame (windows only)"
+  (interactive)
+  ; - remember interface settings
   (w32-fullscreen-maximize-frame))
 
-(defun w32-fullscreen-off ()
+(defun w32-fullscreen-off-foo ()
   "Disable fullscreen display of current frame (windows only)"
   (interactive)
   ; - restore interface settings
@@ -85,7 +90,13 @@
      (tool-bar-lines . ,(w32-fullscreen-recall 'tool-bar-lines))
      (vertical-scroll-bars . ,(w32-fullscreen-recall 'vertical-scroll-bars))))
   (w32-fullscreen-restore-frame)
-  ;(w32-fullscreen-toggle-titlebar)
+  (w32-fullscreen-toggle-titlebar)
+)
+(defun w32-fullscreen-off ()
+  "Disable fullscreen display of current frame (windows only)"
+  (interactive)
+  ; - restore interface settings
+  (w32-fullscreen-restore-frame)
 )
 
 (provide 'w32-fullscreen)
