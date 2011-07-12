@@ -41,6 +41,7 @@
 ;; Language
 (load "c")
 (load "j")
+(load "erlang")
 ;(load "haskell")
 (load (expand-file-name (concat quicklisp-root "slime-helper.el")))
 

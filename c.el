@@ -14,6 +14,22 @@
   (setq indent-tabs-mode nil)
 )
 
+(defun c4-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (c-set-style "K&R")
+  (setq c-basic-offset 4)
+
+  (c-toggle-auto-hungry-state 1)
+  (setq tab-width 4)
+  (setq c-indent-level 4)
+  (setq c-brace-imaginary-offset 0)
+  (setq c-brace-offset -4)
+  (setq c-argdecl-indent 4)
+  (setq c-label-offset -4)
+  (setq c-continued-statement-offset 4)
+  (setq indent-tabs-mode nil)
+)
+
 (defun linux-c-mode ()
   "C mode with adjusted defaults for use with the Linux kernel."
   (interactive)
