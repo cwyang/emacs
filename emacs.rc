@@ -92,6 +92,7 @@
   (require 'w3m-load)
   (setq lpr-command "gtklp")
   (setq inferior-lisp-program "sbcl")
+  (require 'autosave_config)
   (j1))
 
 (defun osx-local ()
