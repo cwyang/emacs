@@ -85,6 +85,11 @@
   (global-set-key [C-kanji] (quote toggle-korean-input-method))
   (setq browse-url-browser-function 'browse-url-default-windows-browser)
   (setq inferior-lisp-program "sbcl.exe")
+  (setq load-path
+	(cons "d:\\apps\\erl5.8.4\\lib\\tools-2.6.6.4\\emacs" load-path))
+  (setq erlang-root-dir "d:\\apps\\erl5.8.4")
+  (setq exec-path (cons "d:\\apps\\erl5.8.4\\bin" exec-path))
+  (require 'erlang-start)
   )
 
 (defun linux-local ()
@@ -93,6 +98,11 @@
   (setq lpr-command "gtklp")
   (setq inferior-lisp-program "sbcl")
   (require 'autosave_config)
+  (setq load-path
+	(cons "/usr/lib/erlang/lib/tools-2.6.6.1/emacs" load-path))
+  (setq erlang-root-dir "/usr/lib/erlang")
+  (setq exec-path (cons "/usr/lib/erlang/bin" exec-path))
+  (require 'erlang-start)
   (j1))
 
 (defun osx-local ()
