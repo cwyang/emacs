@@ -13,19 +13,20 @@
       ;;  Bold font is shown as plain font.
 ;      (setq initial-frame-alist '((width . 40)
 ;				  (height . 40)))
-    (set-default-font "Terminus 10")
+    (set-default-font "Terminus 12")
     (set-fontset-font "fontset-default" 
 	'(#x1100 . #xffdc) '("sun roundgothic" . "unicode-bmp"))
     (set-fontset-font "fontset-default" 
-	'(#xe0bc . #xf66e) '("new gulim" . "unicode-bmp"))
-      (setq default-frame-alist
-	    (append '(
-		      ;; Choose only one for your default font set.
-		      (width . 80)
-		      (height . 40)
-;		      (foreground-color . "#dcdccc")
-		      (cursor-color . "white")
-		      (background-color . "#3f3f3f")
-		      )
-		    default-frame-alist))
-      ))
+		      '(#xe0bc . #xf66e) '("new gulim" . "unicode-bmp")
+    )
+    (setq default-frame-alist
+	  (append '(
+		    ;; Choose only one for your default font set.
+		    (width . 80)
+		    (height . 40)
+					;		      (foreground-color . "#dcdccc")
+		    (cursor-color . "white")
+		    (background-color . "#3f3f3f")
+		    )
+		  default-frame-alist))
+    ))

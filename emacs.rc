@@ -31,17 +31,18 @@
 (global-set-key [f6] 'darkroom-mode)
 (require 'iswitchb) ; enhanced C-x b
 (iswitchb-default-keybindings)
-;(load "x11-setting") ; X11 font
+(load "x11-setting") ; X11 font
 ;(require 'tramp)
 ;(require 'recentf)
 ;(recentf-mode 1)
 ;(load "sunrise-commander")
 ;(fset 'yes-or-no-p 'y-or-n-p)
-
+(setq dired-listing-switches "-al --time-style iso")
 ;; Language
 (load "c")
 (load "j")
 (load "erlang")
+(load "lisp")
 ;(load "haskell")
 (load (expand-file-name (concat quicklisp-root "slime-helper.el")))
 
