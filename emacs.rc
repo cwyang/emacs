@@ -30,21 +30,27 @@
 (require 'darkroom-mode)
 (global-set-key [f6] 'darkroom-mode)
 (require 'iswitchb) ; enhanced C-x b
-(iswitchb-default-keybindings)
+;(iswitchb-default-keybindings)
+(iswitchb-mode)
 (load "x11-setting") ; X11 font
 ;(require 'tramp)
 ;(require 'recentf)
 ;(recentf-mode 1)
 ;(load "sunrise-commander")
 ;(fset 'yes-or-no-p 'y-or-n-p)
+(add-to-list 'load-path "~/emacs/emacs-helm")
+(require 'helm-config)
 (setq dired-listing-switches "-al --time-style iso")
+(setq w3m-use-cookies t)
 ;; Language
 (load "c")
 (load "j")
-(load "erlang")
+;(load "erlang")
 (load "lisp")
-;(load "haskell")
+(load "haskell")
+(load "parenscript")
 (load (expand-file-name (concat quicklisp-root "slime-helper.el")))
+(load "php-mode")
 
 ;; Global Hotkey
 (global-set-key (kbd "M-C") 'compile)
@@ -79,6 +85,13 @@
   (set-default 'compile-command "(cd ~/Cache/j5k_cvs; LANG=C make -j8 -k j5k)")
   (visit-tags-table "~/Cache/j5k_cvs"))
 
+(defun j2 () ; work envirnment
+  "work environment kraken"
+  (interactive)
+  (set-default 'compile-command "(cd ~/Cache/Kraken3; LANG=C make -j8 -k j7k)")
+  (visit-tags-table "~/Cache/Kraken3")
+)
+
 (defun windows-local ()
   "windows environement"
   (require 'w32-fullscreen)
@@ -95,16 +108,19 @@
 
 (defun linux-local ()
   "linux environment, official work mode"
-  (require 'w3m-load)
+;  (require 'w3m-load)
   (setq lpr-command "gtklp")
+  (global-set-key (kbd "C-c h") 'helm-mini)
   (setq inferior-lisp-program "sbcl")
   (require 'autosave_config)
   (setq load-path
-	(cons "/usr/lib/erlang/lib/tools-2.6.6.1/emacs" load-path))
+	(cons "/usr/lib/erlang/lib/tools-2.6.7/emacs" load-path))
   (setq erlang-root-dir "/usr/lib/erlang")
   (setq exec-path (cons "/usr/lib/erlang/bin" exec-path))
-  (require 'erlang-start)
-  (j1))
+;  (require 'erlang-start)
+  (autoload 'eimp-mode "eimp" "Emacs Image Manipulation Package." t)
+  (add-hook 'image-mode-hook 'eimp-mode)
+  (j2))
 
 (defun osx-local ()
   "macbook environment"
@@ -133,7 +149,9 @@
       (t (undefined-local)))
 
 ;; Zenburn!
-(zenburn)
-(redraw-frame (selected-frame))
-
+(and (window-system)
+     (zenburn)
+     (redraw-frame (selected-frame)))
+(or (window-system)
+    (set-terminal-coding-system 'utf-8))
 ;(message "Loading emacs.el... done")

@@ -1,5 +1,5 @@
 ; haskell mode
-(load "~/emacs/haskell-modes/haskell-site-file")
+(load "~/emacs/haskell-mode/haskell-site-file")
 (setq auto-mode-alist
       (append auto-mode-alist
 	      '(("\\.[hg]s$"  . haskell-mode)
