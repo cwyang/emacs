@@ -2,7 +2,8 @@
 (when (and (not window-system)
 	   (string-match "^xterm" (getenv "TERM")))
   (require 'xterm-title)
-  (xterm-title-mode 1))
+;  (xterm-title-mode 1))
+)
 
 (setq hostname (let ((hostname (downcase (system-name))))
 		 (save-match-data

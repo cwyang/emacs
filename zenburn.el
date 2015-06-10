@@ -55,7 +55,9 @@
 (require 'color-theme)
 
 (defvar zenburn-fg "#dcdccc")
-(defvar zenburn-bg "#3f3f3f")
+(defvar zenburn-bg "#333333")
+;; original 3f3f3f
+
 (defvar zenburn-bg+1 "#4f4f4f")
 (defvar zenburn-bg+2 "#5f5f5f")
 (defvar zenburn-red+1 "#dca3a3")
