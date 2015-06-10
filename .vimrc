@@ -29,6 +29,9 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set tags=./tags;
 set textwidth=200
+set number
+set hidden
+set backspace=indent,eol,start
 
 set t_kb=
 fixdel
