@@ -31,8 +31,8 @@
 (global-set-key [f6] 'darkroom-mode)
 (require 'iswitchb) ; enhanced C-x b
 ;(iswitchb-default-keybindings)
+;(load "x11-setting") ; X11 font
 (iswitchb-mode)
-(load "x11-setting") ; X11 font
 ;(require 'tramp)
 ;(require 'recentf)
 ;(recentf-mode 1)
@@ -45,10 +45,11 @@
 ;; Language
 (load "c")
 (load "j")
+;(load "haskell")
 ;(load "erlang")
-(load "lisp")
-(load "haskell")
-(load "parenscript")
+;(load "lisp")
+;(load "haskell")
+;(load "parenscript")
 (load (expand-file-name (concat quicklisp-root "slime-helper.el")))
 (load "php-mode")
 ; multi-web-mode
@@ -122,19 +123,15 @@
   (setq lpr-command "gtklp")
   (global-set-key (kbd "C-c h") 'helm-mini)
   (setq inferior-lisp-program "sbcl")
-  (require 'autosave_config)
-  (setq load-path
-	(cons "/usr/lib/erlang/lib/tools-2.6.7/emacs" load-path))
-  (setq erlang-root-dir "/usr/lib/erlang")
-  (setq exec-path (cons "/usr/lib/erlang/bin" exec-path))
-;  (require 'erlang-start)
-  (autoload 'eimp-mode "eimp" "Emacs Image Manipulation Package." t)
-  (add-hook 'image-mode-hook 'eimp-mode)
-  (j2))
+  (setq erlang-root-dir "/usr/lib/erlang/")
+  (setq erlang-emacs-dir "/usr/lib/erlang/lib/tools-2.6.6.1/emacs")
+  (load "erlang")
+  (j1))
 
 (defun osx-local ()
   "macbook environment"
-  (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
+;  (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
+  (global-set-key (quote [M-return]) 'toggle-frame-fullscreen)
   (setq browse-url-browser-function 'browse-url-generic
 	common-lisp-hyperspec-root "/Users/cwyang/hyperspec7.0/HyperSpec/"  
   )
@@ -142,7 +139,12 @@
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
+;  (setq erlang-root-dir "/usr/local/lib/erlang/")
+;  (setq erlang-emacs-dir "/usr/local/lib/erlang/lib/tools-2.6.6.3/emacs")
+;  (load "erlang")
   (setq mac-option-modifier 'ctrl)
+  (add-to-list 'load-path "/Users/cwyang/haskell-mode/")
+  (load "haskell-mode-autoloads.el")
   (setq mac-command-modifier 'meta))
 
 (defun undefined-local ()
@@ -159,9 +161,6 @@
       (t (undefined-local)))
 
 ;; Zenburn!
-(and (window-system)
-     (zenburn)
-     (redraw-frame (selected-frame)))
-(or (window-system)
-    (set-terminal-coding-system 'utf-8))
+(when (window-system)(zenburn))
+(redraw-frame (selected-frame))
 ;(message "Loading emacs.el... done")
