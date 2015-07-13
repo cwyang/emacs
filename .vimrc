@@ -15,7 +15,7 @@ set nocompatible
 "set modelines=1
 
 language C
-set mouse=h
+"set mouse=h
 set sm
 set ts=8
 set sw=4
@@ -29,6 +29,8 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set tags=./tags;
 set textwidth=200
+
+set encoding=utf-8
 
 set t_kb=
 fixdel
@@ -139,4 +141,4 @@ if has("autocmd")
  endif
 
 endif " has("autocmd")
-let @k="/KRCC/ma/ENCCkmb:'a,\'bd:w"
+"let @k="/KRCC/ma/ENCCkmb:'a,\'bd:w"

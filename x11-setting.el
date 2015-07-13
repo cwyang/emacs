@@ -18,7 +18,8 @@
 ;       ascii:-schumacher-clean-*-r-normal-*-16-*,
        ascii:-*-terminus-medium-r-normal--16-*-*-*-*-*-iso8859-1,
        latin-iso8859-1:-sony-fixed-medium-r-normal-*-16-*-iso8859-1,
-       korean-ksc5601:-*-gulim-medium-r-normal-*-14-*-ksc5601*-*,
+;       korean-ksc5601:-*-gulim-medium-r-normal-*-14-*-ksc5601*-*,
+NanumGothic,
 ;-xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso8859-1
        japanese-jisx0208:-jis-fixed-medium-r-normal--12-*-*-*-C-*-JISX0208.1983-0,
        ;korean-ksc5601:-sun-roundgothic-medium-r-normal-*-16-160-*-ksc5601*-*,
