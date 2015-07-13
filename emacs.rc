@@ -126,7 +126,7 @@
   (setq erlang-root-dir "/usr/lib/erlang/")
   (setq erlang-emacs-dir "/usr/lib/erlang/lib/tools-2.6.6.1/emacs")
   (load "erlang")
-  (j1))
+  (j2))
 
 (defun osx-local ()
   "macbook environment"
