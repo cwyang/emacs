@@ -16,6 +16,20 @@
 (or (getenv "TERM") (setenv "TERM" "n/a"))
 (or (getenv "HANGUL_KEYBOARD_TYPE") (setenv "HANGUL_KEYBOARD_TYPE" "3f"))
 
+;; melpa
+(require 'package)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa-stable" . "http://stable.melpa.org/packages/")))))
+; (1) M-x package-refresh-contents
+; (2) M-x package-install RET haskell-mode
+
 ;; OS/Environment
 (load "local-path")
 ; local-path: hypespec-root & quicklisp-root
@@ -45,13 +59,14 @@
 (setq w3m-use-cookies t)
 ;; Language
 (load "c")
-(load "j")
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;(load "j")
 ;(load "erlang")
 ;(load "lisp")
-;(load "haskell")
+;(load "haskell") -- use melpa 
 ;(load "parenscript")
-(load (expand-file-name (concat quicklisp-root "slime-helper.el")))
-(load "php-mode")
+;(load (expand-file-name (concat quicklisp-root "slime-helper.el")))
+;(load "php-mode")
 ; multi-web-mode
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
