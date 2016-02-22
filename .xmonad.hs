@@ -18,6 +18,7 @@ import System.IO
 import System.Exit
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Grid 
+import XMonad.Util.Paste
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -126,6 +127,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Swap the focused window with the next window (ijkl)
     , ((modm .|. shiftMask, xK_k     ), windows W.swapDown  )
 
+    , ((modm .|. controlMask, xK_k     ), do sendKey controlMask xK_z -- TMUX pane navigation
+					   sendKey 0 xK_k)
+    , ((modm .|. controlMask, xK_i     ), do sendKey controlMask xK_z -- TMUX pane navigation
+					   sendKey 0 xK_i)
     -- Swap the focused window with the previous window (ijkl)
     , ((modm .|. shiftMask, xK_i     ), windows W.swapUp    )
 
