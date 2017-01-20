@@ -1,0 +1,5 @@
+(add-to-list 'load-path "~/emacs/slime-proxy")
+(add-to-list 'load-path "~/emacs/slime-proxy/contrib/slime-parenscript")
+(defun slime-proxy-setup ()
+    (interactive)
+    (slime-setup '(slime-proxy slime-parenscript)))
