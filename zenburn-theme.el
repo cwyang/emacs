@@ -43,7 +43,7 @@
     ("zenburn-bg-1"     . "#2B2B2B")
     ("zenburn-bg-05"    . "#383838")
     ;("zenburn-bg"       . "#3F3F3F")
-    ("zenburn-bg"     . "#202020")
+    ("zenburn-bg"    . "#383838")
     ("zenburn-bg+05"    . "#494949")
     ("zenburn-bg+1"     . "#4F4F4F")
     ("zenburn-bg+2"     . "#5F5F5F")

@@ -1,4 +1,6 @@
 ; haskell mode
+(add-to-list 'load-path "~/github/x/structured-haskell-mode/elisp")
+(require 'shm)
 (load "~/emacs/haskell-mode/haskell-site-file")
 (setq auto-mode-alist
       (append auto-mode-alist

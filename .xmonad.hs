@@ -128,9 +128,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_k     ), windows W.swapDown  )
 
     , ((modm .|. controlMask, xK_k     ), do sendKey controlMask xK_z -- TMUX pane navigation
-					   sendKey 0 xK_k)
+					     sendKey 0 xK_o)
     , ((modm .|. controlMask, xK_i     ), do sendKey controlMask xK_z -- TMUX pane navigation
-					   sendKey 0 xK_i)
+					     sendKey shiftMask xK_o)
     -- Swap the focused window with the previous window (ijkl)
     , ((modm .|. shiftMask, xK_i     ), windows W.swapUp    )
 
