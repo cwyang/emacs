@@ -8,6 +8,7 @@
 --
 
 import XMonad
+import XMonad.Config.Gnome
 -- refer John Goerzen's Configuration 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -288,7 +289,8 @@ myStartupHook = setWMName "LG3D" -- to work with java
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-        xmproc <- spawnPipe "/home/cwyang/bin/xmobar -x 1 /home/cwyang/.xmobarrc"
+        xmproc <- spawnPipe "/home/cwyang/.cabal/bin/xmobar -x 1 /home/cwyang/.xmobarrc"
+        --xmproc <- spawnPipe "xmobar -x 1 /home/cwyang/.xmobarrc"
         xmonad $ defaults {
                  manageHook = manageDocks <+> myManageHook <+> manageHook defaults,
                  layoutHook = avoidStruts $ layoutHook defaults,
@@ -297,7 +299,9 @@ main = do
                      ppTitle = xmobarColor "green" "" . shorten 50
                      }
         } `additionalKeys`
-            [ ((myModMask .|. shiftMask, xK_z), spawn "cinnamon-screensaver-command -l; xset dpms force off")
+            [ ((myModMask .|. shiftMask, xK_z), spawn 
+			-- "cinnamon-screensaver-command -l; xset dpms force off")
+			"xscreensaver-command -l; xset dpms force off")
             , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
             , ((0, xK_Print), spawn "scrot")
             ]
@@ -309,7 +313,7 @@ main = do
 -- 
 -- No need to modify this.
 --
-defaults = defaultConfig {
+defaults = gnomeConfig { -- defaultConfig
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -328,5 +332,5 @@ defaults = defaultConfig {
         layoutHook         = myLayout,
 --        manageHook         = myManageHook,
         logHook            = myLogHook,
-        startupHook        = myStartupHook
+        startupHook        = startupHook gnomeConfig >> myStartupHook
     }
