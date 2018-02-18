@@ -52,8 +52,8 @@
 ;(recentf-mode 1)
 ;(load "sunrise-commander")
 ;(fset 'yes-or-no-p 'y-or-n-p)
-(add-to-list 'load-path "~/emacs/emacs-helm")
-(require 'helm-config)
+;(add-to-list 'load-path "~/emacs/emacs-helm")
+;(require 'helm-config)
 (setq dired-listing-switches "-al --time-style iso")
 (setq w3m-use-cookies t)
 ;; Language
@@ -66,7 +66,7 @@
 ;;(remove-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(remove-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (custom-set-variables
- '(haskell-process-type 'stack-ghci))
+ '(haskell-process-type 'ghci))
 ;(load "j")
 ;(load "erlang")
 ;(load "lisp")
@@ -140,8 +140,8 @@
 ;  (visit-tags-table "~/Cache/Kraken3_work")
 ;  (set-default 'compile-command "(cd ~/Cache/j5k_1_8; LANG=C make -j8 -k j5k)")
 ;  (visit-tags-table "~/Cache/j5k_1_8")
-  (set-default 'compile-command "(cd ~/Cache/ts-x/cxan; LANG=C make -j8)")
-  (visit-tags-table "~/Cache/ts-x")
+;  (set-default 'compile-command "(cd ~/Cache/ts-x/cxan; LANG=C make -j8)")
+;  (visit-tags-table "~/Cache/ts-x")
 )
 
 (defun windows-local ()
@@ -160,13 +160,13 @@
 
 (defun linux-local ()
   "linux environment, official work mode"
-  (require 'w3m-load)
+;  (require 'w3m-load)
   (setq lpr-command "gtklp")
-  (global-set-key (kbd "C-c h") 'helm-mini)
-  (setq inferior-lisp-program "sbcl")
-  (setq erlang-root-dir "/usr/lib/erlang/")
-  (setq erlang-emacs-dir "/usr/lib/erlang/lib/tools-2.6.6.1/emacs")
-  (load "erlang")
+;  (global-set-key (kbd "C-c h") 'helm-mini)
+;  (setq inferior-lisp-program "sbcl")
+;  (setq erlang-root-dir "/usr/lib/erlang/")
+;  (setq erlang-emacs-dir "/usr/lib/erlang/lib/tools-2.6.6.1/emacs")
+;  (load "erlang")
   (j2))
 
 (defun osx-local ()
@@ -211,7 +211,7 @@
 ;; Zenburn!
 ;(when (window-system)(load-theme 'zenburn))
 (redraw-frame (selected-frame))
-(set-default-font "Terminus 12")
+;(set-default-font "Terminus 12")
 (set-terminal-coding-system 'utf-8)
 ;(message "Loading emacs.el... done")
 
@@ -221,3 +221,28 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;merlin
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+      (when (and opam-share (file-directory-p opam-share))
+       ;; Register Merlin
+       (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+       (autoload 'merlin-mode "merlin" nil t nil)
+       ;; Automatically start it in OCaml buffers
+       (add-hook 'tuareg-mode-hook 'merlin-mode t)
+       (add-hook 'caml-mode-hook 'merlin-mode t)
+       ;; Use opam switch to lookup ocamlmerlin binary
+       (setq merlin-command 'opam)))
+;tuareg
+(load "/home/cwyang/.opam/4.06.0/share/emacs/site-lisp/tuareg-site-file")
+
+;company
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'merlin-company-backend))
+(add-hook 'merlin-mode-hook 'company-mode)
+
+                                        ; column
+(setq column-number-mode t)
+(setq-default fill-column 80)
+(setq-default whitespace-line-column 80 whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook #'whitespace-mode)
