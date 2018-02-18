@@ -74,7 +74,7 @@
 (load "c")
 (custom-set-variables
  '(haskell-process-type 'ghci))
-(load "haskell")
+(load "my-haskell")
 (load "ocaml")
 ;(load "j")
 ;(load "erlang")
@@ -139,7 +139,7 @@
   "work environment ts-x"
   (interactive)
   (set-default 'compile-command "(cd ~/ts-x/cxan; LANG=C make -j8)")
-  (visit-tags-table "~/ts-x/TAGS_LIBRE")
+  ;(visit-tags-table "~/ts-x/TAGS_LIBRE")
 )
 
 (defun windows-local ()
