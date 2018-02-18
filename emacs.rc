@@ -1,8 +1,7 @@
 ;;  -*- emacs-lisp -*-
 ;; cwyang's Emacs setting 
-;; 2011.03.27
+;; 2018.02.18
 ;;
-
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -56,9 +55,6 @@
 (load "xterm") ; Xterm & modeline
 (load "parenthesis") ; paredit, match-paren, and mic-paren
 (require 'darkroom-mode)
-(global-set-key [f6] 'darkroom-mode)
-(global-set-key  [f9]   (read-kbd-macro "C-u M-."))
-(global-set-key  [f12]   (read-kbd-macro "C-x o"))
 ;(require 'iswitchb) ; enhanced C-x b
 ;(iswitchb-default-keybindings)
 ;(load "x11-setting") ; X11 font
@@ -70,6 +66,7 @@
 ;(fset 'yes-or-no-p 'y-or-n-p)
 (setq dired-listing-switches "-al --time-style iso")
 (setq w3m-use-cookies t)
+
 ;; Language
 (load "c")
 (load "my-haskell")
@@ -79,35 +76,7 @@
 ;(load "lisp")
 ;(load "parenscript")
 ;(load (expand-file-name (concat quicklisp-root "slime-helper.el")))
-;(load "php-mode")
-; multi-web-mode
-(require 'multi-web-mode)
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 0)
-; web-mode
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-(setq-default indent-tabs-mode nil)
-; js2mode
-;(add-hook 'js-mode-hook 'js2-minor-mode)
-;(add-hook 'js2-mode-hook 'ac-js2-mode)
-;; Global Hotkey
-(global-set-key (kbd "M-C") 'compile)
-(global-set-key (quote [C-up]) (quote scroll-down))
-(global-set-key (quote [C-down]) (quote scroll-up))
-(global-set-key (quote [67108896]) (quote toggle-korean-input-method))
+;(load "my-web")
 
 ;; vc-delete
 (load "vc-delete")
@@ -140,6 +109,12 @@
   ;(visit-tags-table "~/ts-x/TAGS_LIBRE")
 )
 
+(defun wsl-local ()
+  "Windows Subsystem of Linux"
+  (custom-set-variables '(haskell-process-type (quote ghci)))
+  (setq haskell-process-args-ghci '())
+  )
+  
 (defun windows-local ()
   "windows environement"
   (require 'w32-fullscreen)
@@ -172,7 +147,9 @@
   (interactive)
   (message  "environment cannot be determined"))
 
-(cond ((string= system-type "windows-nt")
+(cond ((string-prefix-p "BREEZE" system-name t) ;my WSL machine
+       (wsl-local))
+      ((string= system-type "windows-nt")
        (windows-local))
       ((string= system-type "gnu/linux")
        (linux-local))
@@ -202,4 +179,13 @@
 (setq column-number-mode t)
 
 ;(set-face-attribute 'region nil :background "#8f8f8f" :foreground "#2b2b2b")
+
+;; Global Hotkey
+(global-set-key [f6] 'darkroom-mode)
+(global-set-key [f9]  (read-kbd-macro "C-u M-."))
+(global-set-key [f12] (read-kbd-macro "C-x o"))
+(global-set-key (kbd "M-C") 'compile)
+(global-set-key (quote [C-up]) (quote scroll-down))
+(global-set-key (quote [C-down]) (quote scroll-up))
+(global-set-key (quote [67108896]) (quote toggle-korean-input-method))
 (define-key global-map "\M-*" 'pop-tag-mark)
