@@ -1,19 +1,27 @@
-; haskell mode
-(add-to-list 'load-path "~/github/x/structured-haskell-mode/elisp")
-(require 'shm)
-(load "~/emacs/haskell-mode/haskell-site-file")
-(setq auto-mode-alist
-      (append auto-mode-alist
-	      '(("\\.[hg]s$"  . haskell-mode)
-		("\\.hi$"     . haskell-mode)
-		("\\.l[hg]s$" . literate-haskell-mode))))
+;;(add-to-list 'load-path "~/github/x/structured-haskell-mode/elisp")
+;;(require 'shm)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;(add-hook 'haskell-mode-hook 'intero-mode)
+;;(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+;;(remove-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(remove-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-(autoload 'haskell-mode "haskell-mode"
-  "Major mode for editing Haskell scripts." t)
-(autoload 'literate-haskell-mode "haskell-mode"
-  "Major mode for editing literate Haskell scripts." t)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-(add-hook 'haskell-mode-hook 'font-lock-mode)
-(setq haskell-program-name "/usr/local/bin/ghci")
+(defun haskell-send-eof ()
+  "send eof to interactive buffer"
+  (interactive)
+  (process-send-eof (haskell-process-process (haskell-interactive-process))))
+(add-hook 'haskell-interactive-mode-hook
+          (lambda () (local-set-key (kbd "C-c C-d") 'haskell-send-eof)))
+
+(defun haskell-822-workaround ()
+    (setq haskell-process-args-ghci
+          '("-ferror-spans" "-fshow-loaded-modules"))
+    (setq haskell-process-args-cabal-repl
+          '("--ghc-options=-ferror-spans --ghc-options -fshow-loaded-modules"))
+    (setq haskell-process-args-stack-ghci
+          '("--ghci-options=-ferror-spans -fshow-loaded-modules"
+            "--no-build" "--no-load"))
+    (setq haskell-process-args-cabal-new-repl
+          '("--ghc-options=-ferror-spans -fshow-loaded-modules")))
+
+(haskell-822-workaround)

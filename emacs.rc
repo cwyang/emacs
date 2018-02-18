@@ -3,9 +3,16 @@
 ;; 2011.03.27
 ;;
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq inhibit-splash-screen t)
 (global-font-lock-mode 1)
-(tool-bar-mode -1) ; go away toolbar
+;(tool-bar-mode -1) ; go away toolbar
 
 (add-to-list 'load-path "~/emacs/")
 (add-to-list 'load-path "~/emacs/color-theme-6.6.0")
@@ -23,14 +30,23 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa-stable" . "http://stable.melpa.org/packages/")))))
+ '(custom-safe-themes
+   (quote
+    ("870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
+ '(haskell-interactive-prompt "\\> ")
+ '(haskell-process-type (quote stack-ghci))
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
+ '(package-selected-packages (quote (haskell-mode markdown-mode)))
+ '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
+ '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents
 ; (2) M-x package-install RET haskell-mode
 
 ;; OS/Environment
-(load "local-path")
-; local-path: hypespec-root & quicklisp-root
+(load "local-path") ; local-path: hypespec-root & quicklisp-root
 (require 'hangul) ; New Korean Input
 (load "zenburn-theme") ; color
 (load "my-hangul") ; Korean
@@ -52,25 +68,17 @@
 ;(recentf-mode 1)
 ;(load "sunrise-commander")
 ;(fset 'yes-or-no-p 'y-or-n-p)
-;(add-to-list 'load-path "~/emacs/emacs-helm")
-;(require 'helm-config)
 (setq dired-listing-switches "-al --time-style iso")
 (setq w3m-use-cookies t)
 ;; Language
 (load "c")
-;;(add-to-list 'load-path "~/github/x/structured-haskell-mode/elisp")
-;;(require 'shm)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-;(add-hook 'haskell-mode-hook 'intero-mode)
-;;(add-hook 'haskell-mode-hook 'structured-haskell-mode)
-;;(remove-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;;(remove-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (custom-set-variables
  '(haskell-process-type 'ghci))
+(load "haskell")
+(load "ocaml")
 ;(load "j")
 ;(load "erlang")
 ;(load "lisp")
-;(load "haskell") -- use melpa 
 ;(load "parenscript")
 ;(load (expand-file-name (concat quicklisp-root "slime-helper.el")))
 ;(load "php-mode")
@@ -128,20 +136,10 @@
 
 ;; Local Setting
 (defun j1 () ; work envirnment
-  "work environment j5k"
+  "work environment ts-x"
   (interactive)
-  (set-default 'compile-command "(cd ~/Cache/j5k_cvs; LANG=C make -j8 -k j5k)")
-  (visit-tags-table "~/Cache/j5k_cvs"))
-
-(defun j2 () ; work envirnment
-  "work environment kraken"
-  (interactive)
-;  (set-default 'compile-command "(cd ~/Cache/Kraken3_work; LANG=C make -j8 -k j7k)")
-;  (visit-tags-table "~/Cache/Kraken3_work")
-;  (set-default 'compile-command "(cd ~/Cache/j5k_1_8; LANG=C make -j8 -k j5k)")
-;  (visit-tags-table "~/Cache/j5k_1_8")
-;  (set-default 'compile-command "(cd ~/Cache/ts-x/cxan; LANG=C make -j8)")
-;  (visit-tags-table "~/Cache/ts-x")
+  (set-default 'compile-command "(cd ~/ts-x/cxan; LANG=C make -j8)")
+  (visit-tags-table "~/ts-x/TAGS_LIBRE")
 )
 
 (defun windows-local ()
@@ -150,24 +148,13 @@
   (global-set-key (quote [M-return]) 'w32-fullscreen)
   (global-set-key [C-kanji] (quote toggle-korean-input-method))
   (setq browse-url-browser-function 'browse-url-default-windows-browser)
-  (setq inferior-lisp-program "sbcl.exe")
-  (setq load-path
-	(cons "d:\\apps\\erl5.8.4\\lib\\tools-2.6.6.4\\emacs" load-path))
-  (setq erlang-root-dir "d:\\apps\\erl5.8.4")
-  (setq exec-path (cons "d:\\apps\\erl5.8.4\\bin" exec-path))
-  (require 'erlang-start)
   )
 
 (defun linux-local ()
   "linux environment, official work mode"
-;  (require 'w3m-load)
+  ;(require 'w3m-load)
   (setq lpr-command "gtklp")
-;  (global-set-key (kbd "C-c h") 'helm-mini)
-;  (setq inferior-lisp-program "sbcl")
-;  (setq erlang-root-dir "/usr/lib/erlang/")
-;  (setq erlang-emacs-dir "/usr/lib/erlang/lib/tools-2.6.6.1/emacs")
-;  (load "erlang")
-  (j2))
+  (j1))
 
 (defun osx-local ()
   "macbook environment"
@@ -179,26 +166,13 @@
   (setq browse-url-generic-program
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
-  (setq inferior-lisp-program "/usr/local/bin/sbcl")
-;  (setq erlang-root-dir "/usr/local/lib/erlang/")
-;  (setq erlang-emacs-dir "/usr/local/lib/erlang/lib/tools-2.6.6.3/emacs")
-;  (load "erlang")
   (setq mac-option-modifier 'ctrl)
-  (add-to-list 'load-path "/Users/cwyang/haskell-mode/")
-  (load "haskell-mode-autoloads.el")
   (setq mac-command-modifier 'meta))
 
 (defun undefined-local ()
   "environment cannot be determined"
   (interactive)
   (message  "environment cannot be determined"))
-
-(defun haskell-send-eof ()
-  "send eof to interactive buffer"
-  (interactive)
-  (process-send-eof (haskell-process-process (haskell-interactive-process))))
-(add-hook 'haskell-interactive-mode-hook
-          (lambda () (local-set-key (kbd "C-c C-d") 'haskell-send-eof)))
 
 (cond ((string= system-type "windows-nt")
        (windows-local))
@@ -222,27 +196,12 @@
  ;; If there is more than one, they won't work right.
  )
 
-;merlin
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
-      (when (and opam-share (file-directory-p opam-share))
-       ;; Register Merlin
-       (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-       (autoload 'merlin-mode "merlin" nil t nil)
-       ;; Automatically start it in OCaml buffers
-       (add-hook 'tuareg-mode-hook 'merlin-mode t)
-       (add-hook 'caml-mode-hook 'merlin-mode t)
-       ;; Use opam switch to lookup ocamlmerlin binary
-       (setq merlin-command 'opam)))
-;tuareg
-(load "/home/cwyang/.opam/4.06.0/share/emacs/site-lisp/tuareg-site-file")
-
-;company
-(with-eval-after-load 'company
-  (add-to-list 'company-backends 'merlin-company-backend))
-(add-hook 'merlin-mode-hook 'company-mode)
-
-                                        ; column
+; 80-column whitespace mode
 (setq column-number-mode t)
-(setq-default fill-column 80)
 (setq-default whitespace-line-column 80 whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook #'whitespace-mode)
+;(setq-default fill-column 80)
+(setq column-number-mode t)
+
+;(set-face-attribute 'region nil :background "#8f8f8f" :foreground "#2b2b2b")
+(define-key global-map "\M-*" 'pop-tag-mark)
