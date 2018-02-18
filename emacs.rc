@@ -72,8 +72,6 @@
 (setq w3m-use-cookies t)
 ;; Language
 (load "c")
-(custom-set-variables
- '(haskell-process-type 'ghci))
 (load "my-haskell")
 (load "ocaml")
 ;(load "j")
