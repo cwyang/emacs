@@ -10,7 +10,8 @@
        ;; Use opam switch to lookup ocamlmerlin binary
        (setq merlin-command 'opam)))
 ;tuareg
-(add-to-list 'load-path "/home/cwyang/.opam/4.06.0/share/emacs/site-lisp")
+;(add-to-list 'load-path "/home/cwyang/.opam/4.06.0/share/emacs/site-lisp")
+(load "/home/cwyang/.opam/4.06.0/share/emacs/site-lisp/tuareg-site-file")
 ;company
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'merlin-company-backend))
