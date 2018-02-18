@@ -33,6 +33,7 @@
  '(custom-safe-themes
    (quote
     ("870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
+ '(haskell-interactive-prompt "\\> ")
  '(haskell-process-type (quote stack-ghci))
  '(package-archives
    (quote
@@ -72,6 +73,7 @@
 ;; Language
 (load "c")
 (load "haskell")
+(load "ocaml")
 ;(load "j")
 ;(load "erlang")
 ;(load "lisp")
@@ -194,3 +196,4 @@
 
 (define-key global-map "\M-*" 'pop-tag-mark)
 ;(set-face-attribute 'region nil :background "#8f8f8f" :foreground "#2b2b2b")
+(setq column-number-mode t)
