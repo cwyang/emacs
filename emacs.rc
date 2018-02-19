@@ -147,7 +147,8 @@
   (interactive)
   (message  "environment cannot be determined"))
 
-(cond ((string-prefix-p "BREEZE" system-name t) ;my WSL machine
+(cond ((or (string-prefix-p "BREEZE" system-name t)
+	   (string-prefix-p "YLINUX" system-name t)) ;my WSL machine
        (wsl-local))
       ((string= system-type "windows-nt")
        (windows-local))
