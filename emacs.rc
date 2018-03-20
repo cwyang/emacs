@@ -190,3 +190,5 @@
 (global-set-key (quote [C-down]) (quote scroll-up))
 (global-set-key (quote [67108896]) (quote toggle-korean-input-method))
 (define-key global-map "\M-*" 'pop-tag-mark)
+
+(add-to-list 'auto-mode-alist '("\\.cnf\\'" . conf-mode))
