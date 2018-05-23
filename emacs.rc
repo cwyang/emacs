@@ -71,6 +71,7 @@
 (load "c")
 (load "my-haskell")
 (load "ocaml")
+(load "go")
 ;(load "j")
 ;(load "erlang")
 ;(load "lisp")
