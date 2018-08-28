@@ -38,7 +38,7 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(package-selected-packages (quote (haskell-mode markdown-mode)))
+ '(package-selected-packages (quote (go-mode haskell-mode markdown-mode)))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents

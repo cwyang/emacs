@@ -50,6 +50,7 @@
      do (define-key quail-conversion-keymap
 	    (read-kbd-macro (car kpair)) (cdr kpair)))
   (define-key global-map (kbd "C-x RET s") 'decode-coding-region)
+  (define-key global-map (kbd "C-@") 'toggle-korean-input-method)
 
   ;; hangul <-> english auto conversion
   ;;(when window-system (require 'hangul-auto))
