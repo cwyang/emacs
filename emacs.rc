@@ -70,7 +70,7 @@
 ;; Language
 (load "c")
 (load "my-haskell")
-(load "ocaml")
+;(load "ocaml")
 (load "go")
 ;(load "j")
 ;(load "erlang")
@@ -140,6 +140,7 @@
   (setq browse-url-generic-program
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
+  (setq insert-directory-program "gls" dired-use-ls-dired t)
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
 
