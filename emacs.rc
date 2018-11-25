@@ -9,6 +9,14 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+(defvar my-packages '(jedi
+		      yasnippet))
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 (setq inhibit-splash-screen t)
 (global-font-lock-mode 1)
 ;(tool-bar-mode -1) ; go away toolbar
@@ -29,6 +37,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(custom-safe-themes
    (quote
     ("870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
@@ -128,6 +137,7 @@
 (defun linux-local ()
   "linux environment, official work mode"
   ;(require 'w3m-load)
+  (pyvenv-workon "py3.6")
   (setq lpr-command "gtklp")
   (j1))
 
@@ -141,6 +151,7 @@
   (setq browse-url-generic-program
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
+  (pyvenv-workon "py3.7")
   (setq insert-directory-program "gls" dired-use-ls-dired t)
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))

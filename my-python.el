@@ -3,5 +3,3 @@
       python-indent-guess-indent-offset t
       python-indent-guess-indent-offset-verbose nil)
 
-(pyvenv-workon "py3.6")
-
