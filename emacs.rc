@@ -11,7 +11,7 @@
 
 (when (not package-archive-contents)
   (package-refresh-contents))
-(defvar my-packages '(jedi
+(defvar my-packages '(elpy
 		      yasnippet))
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -47,7 +47,9 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(package-selected-packages (quote (elpy go-mode haskell-mode markdown-mode)))
+ '(package-selected-packages
+   (quote
+    (xcscope cmake-mode go-eldoc elpy go-mode haskell-mode markdown-mode)))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents
@@ -137,7 +139,7 @@
 (defun linux-local ()
   "linux environment, official work mode"
   ;(require 'w3m-load)
-  (pyvenv-workon "py3.6")
+  ;(pyvenv-workon "py3.6")
   (setq lpr-command "gtklp")
   (j1))
 
