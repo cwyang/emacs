@@ -19,7 +19,6 @@
 
 (setq inhibit-splash-screen t)
 (global-font-lock-mode 1)
-;(tool-bar-mode -1) ; go away toolbar
 
 (add-to-list 'load-path "~/emacs/")
 (add-to-list 'load-path "~/emacs/color-theme-6.6.0")
@@ -90,6 +89,9 @@
 ;(load "parenscript")
 ;(load (expand-file-name (concat quicklisp-root "slime-helper.el")))
 ;(load "my-web")
+(add-hook 'perl-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-h f") 'cperl-perldoc)))
 
 ;; vc-delete
 (load "vc-delete")
@@ -146,6 +148,7 @@
 (defun osx-local ()
   "macbook environment"
 ;  (global-set-key (quote [M-return]) 'ns-toggle-fullscreen)
+  (tool-bar-mode -1) ; go away toolbar
   (global-set-key (quote [M-return]) 'toggle-frame-fullscreen)
   (setq browse-url-browser-function 'browse-url-generic
 	common-lisp-hyperspec-root "/Users/cwyang/hyperspec7.0/HyperSpec/"  
@@ -153,8 +156,11 @@
   (setq browse-url-generic-program
 	(if (file-exists-p "/usr/bin/open")
 	    "/usr/bin/open"))
-  (pyvenv-workon "py3.7")
+  (add-hook 'python-mode-hook
+     #'(lambda () (pyvenv-workon "py3.7")))
+  
   (setq insert-directory-program "gls" dired-use-ls-dired t)
+  (set-default-font "Monaco-13")
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
 
