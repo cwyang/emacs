@@ -48,7 +48,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (xcscope cmake-mode go-eldoc elpy go-mode haskell-mode markdown-mode)))
+    (xcscope cmake-mode go-eldoc elpy flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents
