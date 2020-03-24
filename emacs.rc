@@ -11,11 +11,6 @@
 
 (when (not package-archive-contents)
   (package-refresh-contents))
-(defvar my-packages '(elpy
-		      yasnippet))
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
 
 (setq inhibit-splash-screen t)
 (global-font-lock-mode 1)
@@ -48,7 +43,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (xcscope cmake-mode go-eldoc elpy flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
+    (xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents
