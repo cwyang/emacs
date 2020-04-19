@@ -77,7 +77,7 @@
 (load "my-haskell")
 (load "my-python")
 ;(load "ocaml")
-(load "go")
+;(load "go")
 ;(load "j")
 ;(load "erlang")
 ;(load "lisp")
@@ -154,6 +154,7 @@
   (add-hook 'python-mode-hook
      #'(lambda () (pyvenv-workon "py3.7")))
   
+  (setenv "LC_ALL" "ko_KR.UTF-8")
   (setq insert-directory-program "gls" dired-use-ls-dired t)
   (set-default-font "Monaco-13")
   (setq mac-option-modifier 'ctrl)
