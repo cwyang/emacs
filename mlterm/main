@@ -1,0 +1,14 @@
+fg_color = white
+bg_color = black
+scrollbar_mode = right
+input_method = xim
+sb_fg_color = brown
+scrollbar_view_name = next
+logsize=2000
+mode_meta_key=mod1
+mode_meta_mode=esc
+fontsize = 16
+use_anti_alias = false
+type_engine = xcore
+receive_string_via_ucs = true
+use_clipboard = true
