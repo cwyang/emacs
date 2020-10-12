@@ -40,10 +40,10 @@
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
+     ("melpa" . "http://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
+    (poetry flycheck-pycheckers xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents
