@@ -36,14 +36,15 @@
    (quote
     ("870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
  '(haskell-interactive-prompt "\\> ")
- '(haskell-process-type (quote stack-ghci))
+ '(haskell-process-type (quote ghci))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (poetry flycheck-pycheckers xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
+    (python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
+ '(python-black-extra-args (quote ("-S")))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
 ; (1) M-x package-refresh-contents
