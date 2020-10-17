@@ -43,7 +43,7 @@
      ("melpa" . "http://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
+    (flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc flycheck yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
  '(python-black-extra-args (quote ("-S")))
  '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3"))
@@ -77,6 +77,7 @@
 (load "c")
 (load "my-haskell")
 (load "my-python")
+(load "my-rust")
 ;(load "ocaml")
 ;(load "go")
 ;(load "j")
