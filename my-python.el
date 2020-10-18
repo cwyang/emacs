@@ -23,6 +23,8 @@
     '(
       mypy3
       pyflakes
+      pylint
+      flake8
       )
     )
   )
