@@ -7,7 +7,7 @@
   (global-set-key (kbd "C-c n") 'flycheck-next-error)
   ;; this might override a default binding for running a python process,
   ;; see comments below this answer
-  (global-set-key (kbd "C-c p") 'flycheck-prev-error)
+  (global-set-key (kbd "C-c p") 'flycheck-previous-error)
   )
 ;; flycheck-pycheckers
 ;; Allows multiple syntax checkers to run in parallel on Python code
