@@ -95,7 +95,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- close focused window (Die)
     , ((modm .|. shiftMask, xK_d     ), kill)
 
-    , ((controlMask, xK_Return), spawn "xterm")
+    , ((shiftMask .|. controlMask, xK_Return), spawn "xterm")
 
      -- Rotate through the available layout algorithms (yet anoterh)
     , ((modm,               xK_y ), sendMessage NextLayout)
@@ -129,9 +129,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_k     ), windows W.swapDown  )
 
     , ((modm .|. controlMask, xK_k     ), do sendKey controlMask xK_z -- TMUX pane navigation
-					     sendKey 0 xK_o)
+                                             sendKey 0 xK_o)
     , ((modm .|. controlMask, xK_i     ), do sendKey controlMask xK_z -- TMUX pane navigation
-					     sendKey shiftMask xK_o)
+                                             sendKey shiftMask xK_o)
     -- Swap the focused window with the previous window (ijkl)
     , ((modm .|. shiftMask, xK_i     ), windows W.swapUp    )
 
@@ -157,7 +157,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --    , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
  
     -- toggle the status bar gap
-    -- TODO, update this binding with avoidStruts , ((modm , xK_b ), sendMessage ToggleStruts)
+    , ((modm , xK_apostrophe ), sendMessage ToggleStruts)
  
     -- Quit xmonad (Quit)
 --    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -218,11 +218,12 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Grid ||| Full  -- ||| Mirror tiled
+myLayout = tiled ||| Full ||| tiled2 -- ||| Mirror tiled ||| Grid
   where
      -- default tiling algorithm partitions the screen into two panes
      -- tiled   = ResizableTall nmaster delta ratio
      tiled   = ResizableTall nmaster delta ratio []
+     tiled2   = ResizableTall 2 delta ratio []
  
      -- The default number of windows in the master pane
      nmaster = 1
@@ -250,8 +251,9 @@ myLayout = tiled ||| Grid ||| Full  -- ||| Mirror tiled
 --
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "mplayer2"           --> doFloat
+    , className =? "mplayer2"       --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "Uim-toolbar-gtk3" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
  
@@ -289,7 +291,7 @@ myStartupHook = setWMName "LG3D" -- to work with java
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-        xmproc <- spawnPipe "/home/cwyang/.cabal/bin/xmobar -x 1 /home/cwyang/.xmobarrc"
+        xmproc <- spawnPipe "/home/cwyang/.cabal/bin/xmobar -x 0 /home/cwyang/.xmobarrc"
         --xmproc <- spawnPipe "xmobar -x 1 /home/cwyang/.xmobarrc"
         xmonad $ defaults {
                  manageHook = manageDocks <+> myManageHook <+> manageHook defaults,
@@ -302,7 +304,7 @@ main = do
             [ ((myModMask .|. shiftMask, xK_z), spawn 
 			-- "cinnamon-screensaver-command -l; xset dpms force off")
 			"xscreensaver-command -l; xset dpms force off")
-            , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+            , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s -e 'xclip -selection clipboard -target image/png -i $f'")
             , ((0, xK_Print), spawn "scrot")
             ]
  
