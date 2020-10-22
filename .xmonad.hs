@@ -304,7 +304,8 @@ main = do
             [ ((myModMask .|. shiftMask, xK_z), spawn 
 			-- "cinnamon-screensaver-command -l; xset dpms force off")
 			"xscreensaver-command -l; xset dpms force off")
-            , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s -e 'xclip -selection clipboard -target image/png -i $f'")
+            , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s -e 'xclip -selection clipboard -target image/png -i $f; rm $f'")
+            , ((controlMask .|. shiftMask , xK_Print), spawn "sleep 0.2; scrot -s -e 'xclip -selection clipboard -target image/png -i $f'")
             , ((0, xK_Print), spawn "scrot")
             ]
  
