@@ -33,20 +33,18 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(custom-safe-themes
-   (quote
-    ("342430928281420b19ffe6a87dadf902db11bf6055d92ee25c5695560113062e" "870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
+   '("342430928281420b19ffe6a87dadf902db11bf6055d92ee25c5695560113062e" "870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default))
  '(haskell-interactive-prompt "\\> ")
- '(haskell-process-type (quote ghci))
+ '(haskell-process-type 'ghci)
  '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/"))))
+   '(("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/")))
  '(package-selected-packages
-   (quote
-    (racer cargo flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc yasnippet company-lsp lsp-ui lsp-mode go-guru go-mode haskell-mode markdown-mode)))
- '(python-black-extra-args (quote ("-S")))
- '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
- '(python-shell-interpreter "python3"))
+   '(racer cargo flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc yasnippet company-lsp lsp-ui go-guru go-mode haskell-mode markdown-mode))
+ '(python-black-extra-args '("-S"))
+ '(python-shell-exec-path '("/home/cwyang/local/bin"))
+ '(python-shell-interpreter "python3")
+ '(tool-bar-mode nil))
 ; (1) M-x package-refresh-contents
 ; (2) M-x package-install RET haskell-mode
 
@@ -172,7 +170,11 @@
   (setq dired-listing-switches "-al")
   (setenv "LC_ALL" "ko_KR.UTF-8")
   (setq insert-directory-program "gls" dired-use-ls-dired t)
-  (set-default-font "Monaco-13")
+  (when (member "Monaco" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monaco-14"))
+    (add-to-list 'default-frame-alist '(font . "Monaco-14")))
+  (set-fontset-font t 'symbol (font-spec :family "Apple Symbols") nil 'prepend)
+  (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)  
   (setq mac-option-modifier 'ctrl)
   (setq mac-command-modifier 'meta))
 
@@ -200,6 +202,7 @@
 system-name
 ;; Zenburn!
 ;(when (window-system)(load-theme 'zenburn))
+(load-theme 'zenburn)
 (redraw-frame (selected-frame))
 ;(set-default-font "Terminus 12")
 (set-terminal-coding-system 'utf-8)
