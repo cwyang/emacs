@@ -169,6 +169,7 @@
   (add-hook 'python-mode-hook
      #'(lambda () (pyvenv-workon "py3.7")))
   
+  (setq dired-listing-switches "-al")
   (setenv "LC_ALL" "ko_KR.UTF-8")
   (setq insert-directory-program "gls" dired-use-ls-dired t)
   (set-default-font "Monaco-13")
@@ -183,6 +184,8 @@
 (cond ((or (string-prefix-p "BREEZE" system-name t)
 	   (string-prefix-p "YLINUX" system-name t)) ;my WSL machine
        (wsl-local))
+      ((string= system-type "darwin")
+       (osx-local))
       ((string-prefix-p "mars" system-name t)
        (linux-mars))
       ((string-prefix-p "jupiter" system-name t)
@@ -193,8 +196,6 @@
        (windows-local))
       ((string= system-type "gnu/linux")
        (linux-local))
-      ((string= system-type "darwin")
-       (osx-local))
       (t (undefined-local)))
 system-name
 ;; Zenburn!
