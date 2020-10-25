@@ -40,7 +40,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")))
  '(package-selected-packages
-   '(racer cargo flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc yasnippet company-lsp lsp-ui go-guru go-mode haskell-mode markdown-mode))
+   '(mic-paren racer cargo flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc yasnippet company-lsp lsp-ui go-guru go-mode haskell-mode markdown-mode))
  '(python-black-extra-args '("-S"))
  '(python-shell-exec-path '("/home/cwyang/local/bin"))
  '(python-shell-interpreter "python3")
