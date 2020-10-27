@@ -1,4 +1,6 @@
 ;; flycheck
+(use-package python-pytest
+  :ensure t)
 (use-package flycheck
   :ensure t
   :config
