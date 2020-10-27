@@ -25,7 +25,7 @@
     '(
       mypy3
       pyflakes
-      pylint
+      ;pylint
       flake8
       )
     )
