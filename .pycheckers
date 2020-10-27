@@ -1,0 +1,2 @@
+[DEFAULT]
+ignore_codes=E302,E305
