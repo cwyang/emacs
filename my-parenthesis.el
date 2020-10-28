@@ -16,3 +16,6 @@
   :config
   (paren-activate) ; activating
   (setq paren-priority 'close))
+
+(show-paren-mode 1)
+(setq show-paren-delay 0)

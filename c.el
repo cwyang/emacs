@@ -12,6 +12,8 @@
   (setq c-label-offset -8)
   (setq c-continued-statement-offset 8)
   (setq indent-tabs-mode nil)
+
+  (flycheck-mode 0)
 )
 
 (defun c4-mode ()
