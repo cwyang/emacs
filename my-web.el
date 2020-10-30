@@ -17,7 +17,6 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-(setq-default indent-tabs-mode nil)
 ; js2mode
 ;(add-hook 'js-mode-hook 'js2-minor-mode)
 ;(add-hook 'js2-mode-hook 'ac-js2-mode)
