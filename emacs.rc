@@ -235,3 +235,6 @@ system-name
 (define-key global-map "\M-*" 'pop-tag-mark)
 
 (add-to-list 'auto-mode-alist '("\\.cnf\\'" . conf-mode))
+
+(projectile-mdoe +1)
+(define-key projectile-mode-map (kbd "C-c j") 'projectile-command-map)
