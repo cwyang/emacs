@@ -33,16 +33,19 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(custom-safe-themes
-   '("342430928281420b19ffe6a87dadf902db11bf6055d92ee25c5695560113062e" "870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default))
+   (quote
+    ("342430928281420b19ffe6a87dadf902db11bf6055d92ee25c5695560113062e" "870c32f255246983e2577bdb93a5a8676f922b3caf43e88a7b1d47b066c7be09" "4a9f829d554ec72227c2de650a8a6b57e6682acd078a315553a505e0a954e296" default)))
  '(haskell-interactive-prompt "\\> ")
- '(haskell-process-type 'ghci)
+ '(haskell-process-type (quote ghci))
  '(package-archives
-   '(("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/")))
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/"))))
  '(package-selected-packages
-   '(paredit mic-paren racer cargo flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc yasnippet company-lsp lsp-ui go-guru go-mode haskell-mode markdown-mode))
- '(python-black-extra-args '("-S"))
- '(python-shell-exec-path '("/home/cwyang/local/bin"))
+   (quote
+    (vterm paredit mic-paren racer cargo flycheck-rust rust-mode python-black flycheck-pycheckers flycheck-pyflakes elpy poetry xcscope cmake-mode go-eldoc yasnippet company-lsp lsp-ui go-guru go-mode haskell-mode markdown-mode)))
+ '(python-black-extra-args (quote ("-S")))
+ '(python-shell-exec-path (quote ("/home/cwyang/local/bin")))
  '(python-shell-interpreter "python3")
  '(tool-bar-mode nil))
 ; (1) M-x package-refresh-contents
@@ -237,5 +240,5 @@ system-name
 
 (add-to-list 'auto-mode-alist '("\\.cnf\\'" . conf-mode))
 
-(projectile-mdoe +1)
+(projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c j") 'projectile-command-map)
