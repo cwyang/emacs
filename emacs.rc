@@ -78,6 +78,7 @@
 
 ;; Language
 (load "c")
+(load "dart")
 (load "my-haskell")
 (load "my-python")
 (load "my-rust")
@@ -155,7 +156,7 @@
   "linux environment, official work mode"
 ;  (require 'w3m-load)
   (setq lpr-command "gtklp")
-  (j1))
+  )
 
 (defun osx-local ()
   "macbook environment"

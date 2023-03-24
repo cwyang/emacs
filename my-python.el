@@ -23,7 +23,7 @@
     )
   (setq flycheck-pycheckers-checkers
     '(
-      mypy3
+      ;mypy3
       pyflakes
       ;pylint
       flake8
@@ -39,6 +39,10 @@
   (add-hook 'elpy-mode-hook 'poetry-tracking-mode) ;; optional if you're using Poetry
   (setq elpy-rpc-virtualenv-path 'current)
   (setq elpy-syntax-check-command "~/.pyenv/shims/pyflakes") ;; or replace with the path to your pyflakes binary
+  (setenv "PYTHONIOENCODING" "utf-8")
+  (add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+  (add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
+  (add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
   ;; allows Elpy to see virtualenv
   (add-hook 'elpy-mode-hook
         ;; pyvenv-mode
