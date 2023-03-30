@@ -37,15 +37,23 @@
   (interactive)
   (c-mode)
 ;  (noninteractive-linux-c-mode)
-  (c4-mode))
+  (c4-mode)
+  )
+(defun vpp-c-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (interactive)
+  (c-mode)
+;  (noninteractive-linux-c-mode)
+;  (c4-mode)
+  (c-set-style "gnu")
+  )
 
 (add-hook 'c-mode-hook (lambda ()
                          (noninteractive-linux-c-mode)))
-
-(setq auto-mode-alist 
-      (cons '("/usr/src/linux.*/.*\\.[ch]$" . linux-c-mode) 
-	    auto-mode-alist))
-
+(setq auto-mode-alist
+      (append '(("/usr/src/linux.*/.*\\.[ch]$" . linux-c-mode)
+		("/home/vagrant/vpp.*/.*\\.[ch]$" . vpp-c-mode))
+	      auto-mode-alist))
 ;; style I want to use in c++ mode
 (c-add-style "my-style"
              '("stroustrup"
