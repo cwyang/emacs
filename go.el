@@ -27,9 +27,9 @@
 
 ;; company-lsp integrates company mode completion with lsp-mode.
 ;; completion-at-point also works out of the box but doesn't support snippets.
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
+;; (use-package company-lsp
+;;   :ensure t
+;;   :commands company-lsp)
 
 ;; Optional - provides snippet support.
 (use-package yasnippet
@@ -39,9 +39,13 @@
 
 (defun my-go-mode-hook ()
   (setq tab-width 4 indent-tabs-mode 1)
-  (go-eldoc-setup)
-  (local-set-key (kbd "M-.") #'godef-jump)
   (add-hook 'before-save-hook 'gofmt-before-save)
+  (local-set-key (kbd "M-.") 'lsp-find-definition)
+;  (go-eldoc-setup)
+;  (local-set-key (kbd "M-.") 'go-guru-definition)
+;  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  ;; highlight identifiers
+  (go-guru-hl-identifier-mode)
 
 ; extra keybindings from https://github.com/bbatsov/prelude/blob/master/modules/prelude-go.el
   (let ((map go-mode-map))

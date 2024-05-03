@@ -46,7 +46,7 @@
   ;; allows Elpy to see virtualenv
   (add-hook 'elpy-mode-hook
         ;; pyvenv-mode
-        '(lambda ()
+        #'(lambda ()
            (pyvenv-mode +1)
            )
         )
