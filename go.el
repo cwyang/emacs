@@ -42,6 +42,7 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   (local-set-key (kbd "M-.") 'lsp-find-definition)
 ;  (go-eldoc-setup)
+;  (local-set-key (kbd "M-.") #'godef-jump)
 ;  (local-set-key (kbd "M-.") 'go-guru-definition)
 ;  (local-set-key (kbd "M-*") 'pop-tag-mark)
   ;; highlight identifiers
