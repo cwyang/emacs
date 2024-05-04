@@ -111,5 +111,5 @@ BATTERY_STATUS=`battery_status $1`
 if [ -n "$CUTE_BATTERY_INDICATOR" ]; then
     echo `cutinate $BATTERY_STATUS`
 else
-    echo ${BATTERY_STATUS}%
+    echo "${BATTERY_STATUS}% "
 fi
