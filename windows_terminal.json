@@ -1,0 +1,23 @@
+"actions":
+[
+    {
+	"keys": "ctrl+v"
+    }
+],
+"profiles":
+{
+    "defaults":
+    {
+	"font":
+	{
+            "face": "Consolas",
+            "size": 11.0
+	},
+	"padding": "0",
+	"scrollbarState": "hidden",
+	"snapOnInput": true,
+    }
+}
+
+
+
